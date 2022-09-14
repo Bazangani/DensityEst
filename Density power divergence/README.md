@@ -18,6 +18,5 @@ This family of divergences provide a tuning parameter to tune the importance of 
 
 Density power divegence 
 ===============
-Density power divergence is a family of divergence that masure the distance between two distributions by:
-
+Density power divergence is a family of divergence that measures the distance between two distributions $f(x)$ and $g(x)$ by:
 $d_{α}(g,f) = \int [{f^{1+α}(x) - (1+ \frac{1}{α})f^α(x) g(x) + \frac{1}{α} g^{1+α}(x)}] dx$
