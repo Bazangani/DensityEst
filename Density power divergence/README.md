@@ -7,7 +7,7 @@ In order to make this comparison, we need a metric to measure the distance betwe
 **Reference** : 
 1. Basak, Sancharee, Ayanendranath Basu, and M. C. Jones. "On the ‘optimal’density power divergence tuning parameter." Journal of Applied Statistics 48.3 (2021): 536-556.
 
-2.Akrami, Haleh, et al. "A robust variational autoencoder using beta divergence." Knowledge-Based Systems 238 (2022): 107886.
+2. Akrami, Haleh, et al. "A robust variational autoencoder using beta divergence." Knowledge-Based Systems 238 (2022): 107886.
 
 
 Introduction 
