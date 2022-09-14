@@ -12,7 +12,12 @@ In order to make this comparison, we need a metric to measure the distance betwe
 
 Introduction 
 ===============
-In order to measure the distance between two densities, we need to take into account and balance two factors, efficiency and robustness in a good manner. Finding an optimal tuning parameter is an important element to keep this trade-off.
+In order to measure the distance between two densities, we need to take into account and balance two factors, efficiency and robustness, in a good manner. Finding an optimal tuning parameter is an important element to keep this trade-off.
 Finding an optimal tuning parameter is an important element to keep this trade-off. The Density Power Divegence (DPD) gives us this posiblity to find the optimal place between these two factors in a density estimation challenge.
 This family of divergences provide a tuning parameter to tune the importance of efficiency and robustness. 
 
+Density power divegence 
+===============
+Density power divergence is a family of divergence that masure the distance between two distributions by:
+
+$d_{α}(g,f) = \int [{f^{1+α}(x) - (1+ \frac{1}{α})f^α(x) g(x) + \frac{1}{α} g^{1+α}(x)}] dx$
