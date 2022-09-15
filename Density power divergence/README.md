@@ -9,6 +9,8 @@ In order to make this comparison, we need a metric to measure the distance betwe
 
 2. Akrami, Haleh, et al. "A robust variational autoencoder using beta divergence." Knowledge-Based Systems 238 (2022): 107886.
 
+3. Futami, Futoshi, Issei Sato, and Masashi Sugiyama. "Variational inference based on robust divergences." International Conference on Artificial Intelligence and Statistics. PMLR, 2018.
+
 
 Introduction 
 ===============
