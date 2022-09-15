@@ -1,4 +1,4 @@
-Density Power Divergence (β-divergence)
+Robust Variational Inference based on Density Power Divergence (β-divergence)
 ===============
 One of the primary methods for the estimation of an unknown density is a parametric estimation. In parametric analysis basically, we compare the unknown distribution with a parametric family of distribution.
 In order to make this comparison, we need a metric to measure the distance between two distributions. In this study, we focus on Density power divergence as a distance measurement between the unknown distribution and the parametric family of distributions. 
@@ -44,5 +44,25 @@ $\frac{-1}{N}\sum_{i=1}^{N} logf(x|0) =  -Ε_{x\equivf(x|0)}[log g(x)]$
 
 Therfore KL-divergence and eventually liklihood estimation (MLE) can be considered as a specialcase of the MDPDE when $β = 0$
 
+Robust Variational Inference with (β-divergence)
+===============
+Usually we are interested in computing the distribution over a variable $z$ conditioned on the observed variable $x$ like $p(z|x)$. For estimation of this distribution called $\hat{p}_{θ}(z|x)$ We define a model with parameter $θ$ and optimize the parameters to make the estimated distribution as close as possible to the underlying distribution. 
+
+Estimation of a conditional distribution is a hard task when the data distribution ishigh dimension like image or video. variational inference is a method to approximatethis probability. They are many ways to find the parameters such asmaximize the likelihood or maximize the log posterior w.r.t $θ$ with Bayesian leaning. 
+
+The main problem with likelihood estimation is the marginal probability $p_{θ}(z|x)$ of the data is not tractable and it cause not having an analytical solution.
+
+
+In variational inference we can approximate this density with a defined distribution like $Q(z)$ for the latent space andthe main aim is to find the density ofQas close as possible to the posterior density $P(z|x)$ through an optimization process as follows:
+
+$L(Q(θ)) = - D_{KL}(q_{θ}(z|x)∥p_{θ}(z)) + E_{q_{θ}(z|x)} [p_{θ}(z|x)]$
+
+The first term is the KL divergence (between approximate posterior and theprior) and the second term is the cross-entropy. In order to have a robust variational inference we can replace the KL divergence with β-divergence.
+
+$L(Q(θ)) = - D_{KL}(q_{θ}(z|x)∥p_{θ}(z)) + E_{q_{θ}(z|x)} [p_{θ}(z|x)]$
+
+Therefore the goal of this robust variational inferece is to find :
+
+$Argmin_{q_{θ}(z|x)} E_{q_{θ}(z|x)} [d_{β}(q_{θ}(z|x)∥p_{θ}(z))+[p_{θ}(z|x)]]$
 
 
