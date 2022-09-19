@@ -6,6 +6,7 @@ Wasserstein Variational Autoencoder (W-VAE) is a generative model based on optim
 **Refrences**
 1. Tolstikhin, Ilya, et al. "Wasserstein auto-encoders." arXiv preprint arXiv:1711.01558 (2017).
 2. Wasserman, L. "Optimal transport and wasserstein distance." (2017).
+3. Chen, Zichuan, and Peng Liu. "Towards Better Data Augmentation using Wasserstein Distance in Variational Auto-encoder." arXiv preprint arXiv:2109.14795 (2021).
 
 
 Wasserstein distance
@@ -23,10 +24,16 @@ $d_{2}=||m_{1}-m{2}||_{2}^{2}+ +Tr(Σ_1+Σ_2-2(Σ_1^{\frac {1}{2}} Σ_2 Σ_1^{\f
 
 Wasserstein Variational Autoencoder
 ------------------------------------------
-In W-VAE we minimize the optimal transport $W_c(p_x,p_g)$ for any cost function c considering the data distribution $p_x$ and a latent variable model $p_g$ spesified on the prior distribution $p_z$. SO we can define the generative model as $p_g(x|z)$.
+In W-VAE we compress the observed data $x$ into low dimentional latent variable $z$ by an aproximate posterior distribution $Q(z|x)$ by the encoder and the decoder reconstruct $p(x)$. The ELBOW lost fucntion in VAE coonsists of mariginal liklihood of the recounstructed data and the KL divergence of the aproximate and true posterior distribution on $z$:
+$ELBO_{kl} = E_{z \sim Q(z|x)} [log(p(x|z))] = \int Q(z|x)log(p(x|z))dz -KL(Q(z|x)||p(z))$
+
+For W-VAE we replaced the KL divergence with wasserstein distance :
+$ELBO_{W} = E_{z \sim Q(z|x)} [log(p(x|z))] = \int Q(z|x)log(p(x|z))dz -W_p(Q(z|x)||p(z))$
+
+by replacing the $p(z) \sim 
 
 
 
-The objective function is consist of two parts, reconstruction cost and a regularizer $D_z(p_z,q(z))$
+
 
 
