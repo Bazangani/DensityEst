@@ -10,6 +10,4 @@ Wasserstein Variational Autoencoder (W-VAE) is a generative model based on optim
 
 Wasserstein distance
 ---------------
-Supose we have two distributions $p(x)$ and $q(x)$ there are many ways to compute the distance between these two distributions such as KL divergence but there is some drawback with these kind of distances such as These distances ignore the underlying geometry of the space.
-
- 
+Suppose we have two distributions $p(x)$ and $q(x)$ there are many ways to compute the distance between these two distributions such as KL divergence but there is some drawback with these kinds of distances such as These distances ignore the underlying geometry of the space. Wasserstein distance is useful in practice mainly when the data is supported on low dimensional manifolds in the input space.  Usually, in machine learning, we assume that one's observed data lie on a low-dimensional manifold embedded in a higher-dimensional space. Therefore a distance such as f-divergence which measures the density ratio between distributions often max out and provides no useful gradients for training. 
