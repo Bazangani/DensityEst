@@ -30,7 +30,27 @@ $ELBO_{kl} = E_{z \sim Q(z|x)} [log(p(x|z))] = \int Q(z|x)log(p(x|z))dz -KL(Q(z|
 For W-VAE we replaced the KL divergence with wasserstein distance :
 $ELBO_{W} = E_{z \sim Q(z|x)} [log(p(x|z))] = \int Q(z|x)log(p(x|z))dz -W_p(Q(z|x)||p(z))$
 
-by replacing the $p(z) \sim 
+By replacing the $p(z) \sim N(0,1)$ and $Q(z|x) \sim N((μ_1, μ_2, ...,μ_m),{𝜎_12,𝜎_22,…,𝜎_𝑚2})$ with  the unknown mean vector ${𝜇_1,𝜇_2,…,𝜇)𝑚}$ and diagonal variance vector ${𝜎_12,𝜎_22,…,𝜎_𝑚2}$. Since $p(z)$ is multivariate normal we can compute the KL divergence as follows:
+
+$KL(Q(z|x)||p(z)) = \frac {1}{2} [Π_{i=1} ^{m} − log𝜎_𝑖 ^2 + Σ_{i=1} ^{m} (𝜇_𝑖 ^2 + 𝜎_𝑖 ^2)−𝑚]$
+
+So to compare the Kl diveregnce with W-distance we have:
+
+$W_2(𝑄(𝑧|𝑥) || 𝑃(𝑧))=||𝝁−𝟎||_2 ^2+ 𝑇𝑟(Σ+ 𝐈 −2(𝐈^{\frac{1}{2}}Σ𝐈^{\frac{1}{2}})^{\frac{1}{2}})$
+
+Therefore we can define the difrence disstance between KL divergence and W-distance with $T$ as follows:
+
+$T=W_2(𝑄(𝑧|𝑥) ||𝑃(𝑧))− KL(𝑄(𝑧|𝑥) ||𝑃(𝑧))= 𝑙𝑜𝑔 Π_{i=0} ^m 𝜎_𝑖 ^2 +Σ_{i=1} ^m (𝜎_𝑚 − 2)^2 + Σ_{i=1} ^m 𝜇_𝑖^2−𝑚$
+
+The value of $T$ depends on the variances $𝜎_𝑖$
+
+1. When $𝜎_1,𝜎_2,…,𝜎_𝑚=1$, $T=0$, suggesting that ELBOW and ELBOKL are identical at this point.
+2. When $𝜎_1,𝜎_2,…,𝜎_𝑚≤1$, it’s easy to show $\frac{𝜕T}{𝜎_1},\frac{𝜕T}{𝜎_2},…,\frac{𝜕T}{𝜎_m}≥0$, suggesting that $T$ increases monotonically across ${𝜎_1,𝜎_2,…,𝜎_𝑚}$, jointly resulting in $T≤0$.
+
+Therefore, when $𝜎_1,𝜎_2,…,𝜎_𝑚≤1$, ELBOW is closer to $log(𝑃(𝑥))$ than ELBOKL in its approximation.
+
+
+
 
 
 
