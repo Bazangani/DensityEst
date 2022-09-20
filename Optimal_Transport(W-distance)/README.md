@@ -48,6 +48,9 @@ The value of $T$ depends on the variances $𝜎_𝑖$
 2. When $𝜎_1,𝜎_2,…,𝜎_𝑚≤1$, it’s easy to show $\frac{𝜕T}{𝜎_1},\frac{𝜕T}{𝜎_2},…,\frac{𝜕T}{𝜎_m}≥0$, suggesting that $T$ increases monotonically across ${𝜎_1,𝜎_2,…,𝜎_𝑚}$, jointly resulting in $T≤0$.
 
 Therefore, when $𝜎_1,𝜎_2,…,𝜎_𝑚≤1$, ELBOW is closer to $log(𝑃(𝑥))$ than ELBOKL in its approximation.
+ELBOW may not be a consistent estimator when the model overfits, and the training process may conclude with a higher ELBOW than $log(𝑃(𝑥))$. To enforce the consistency property of ELBOW, it is necessary to place an inductive bias such that $T=0$ upon model convergence. This is achieved by introducing an additional hyperparameter $𝜆$ that controls the weight of the Wasserstein distance term, forming a new objective function $ELBOW_λ$ as follows:
+
+$ELBOW_λ= ∫𝑄(𝑧|𝑥)log(𝑃(𝑥|𝑧))𝑑𝑧 − λ W_2(𝑄(𝑧|𝑥) || 𝑃(𝑧))$
 
 
 
